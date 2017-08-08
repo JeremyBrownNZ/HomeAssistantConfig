@@ -1,0 +1,28 @@
+##############################################################################################
+#
+#                                      Text to Speak Automations
+#                                                                                      J Brown
+##############################################################################################
+- action:
+  - alias: Free Power Hour
+    data:
+      message: Free Power Hour!
+    entity_id: media_player.home
+    service: tts.google_say
+  alias: free_power_hour
+  trigger:
+    platform: time
+    at: '21:00:00'
+
+- action:
+  - alias: Heat Pump Restore
+    data:
+      message: Heat Pump Restored
+    entity_id: media_player.home
+    service: tts.google_say
+  alias: heatpump_restored
+  trigger:
+  - entity_id: switch.heatpump1
+    platform: state
+    from: 'on'
+    to: 'off'

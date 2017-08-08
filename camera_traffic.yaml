@@ -1,0 +1,69 @@
+##############################################################################################
+#
+#                                 Cameras from NZTA of CHCH
+#                                                                                      J Brown
+##############################################################################################
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/265.jpg
+    name: SH1 and SH74, Main North / Johns Road looking north
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/266.jpg
+    name: SH1 and SH74, Main North / Johns Road looking west
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/292.jpg
+    name: SH1, Main North Rd looking north to Dickeys Rd and Motorway
+
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/263.jpg
+    name: SH74, Main North / QEII Looking Northeast
+
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/287.jpg
+    name: Briggs Rd, Lake Terrace, Marshland Rd looking north to Homebase
+
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/256.jpg
+    name: SH74, Anzac / Pages looking south, Christchurch
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/262.jpg
+    name: SH1 and SH73, Yaldhurst / Russley looking west, Christchurch
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/261.jpg
+    name: SH73, Yaldhurst / Curletts looking west
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/260.jpg
+    name: SH73A and SH1, The Hub Hornby looking west, Christchurch
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/258.jpg
+    name: SH73, Blenheim / Curletts looking south, Christchurch
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/284.jpg
+    name: Halswell Junction Rd and Shands Rd intersection
+
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/285.jpg
+    name: Halswell Junction Rd looking east to Springs Rd
+ 
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/283.jpg
+    name: Southern Motorway - Curletts Rd Interchange
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/259.jpg
+    name: SH73, Brougham / Colombo looking west
+    
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/286.jpg
+    name: Brougham Ensors looking north to railway
+
+  - platform: generic
+    still_image_url: http://www.trafficnz.info/camera/267.jpg
+    name: SH74 Dyers Linwood, Christchurch
+    

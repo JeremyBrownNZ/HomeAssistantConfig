@@ -1,0 +1,112 @@
+##############################################################################################
+#
+#                                         Configuration
+#                                                                                      J Brown
+##############################################################################################
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 20
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Pacific/Auckland
+  customize: !include customize.yaml
+
+frontend:                 # Enables the frontend
+  themes:
+    green:
+      primary-color: "#6CA518"
+    graphite:
+      primary-color: "#454343"
+      
+config:                     # Enables configuration UI
+updater:                  # Checks for available updates
+conversation:          # Allows you to issue voice commands from the frontend in enabled browsers
+history:                   # Enables support for tracking state changes over time.
+logbook:                  # View all events in a logbook
+sun:                        # Track the sun
+ios:                         # Allow for Iphone App
+shopping_list:
+#discovery:                # Discover some devices automatically
+
+http:
+   api_password: !secret http_password
+   base_url: !secret http_address
+
+tts:                        # Text to speech
+  - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
+
+automation main: !include automations_main.yaml  
+automation tts: !include automations_tts.yaml  
+binary_sensor: !include binary_sensor.yaml
+camera: !include camera.yaml
+camera traffic: !include camera_traffic.yaml
+device_tracker: !include device_tracker.yaml
+group: !include groups.yaml
+media_player: !include media_player.yaml
+sensor: !include sensor.yaml
+switch: !include switches.yaml
+zone: !include zones.yaml
+
+panel_iframe:
+  router:
+    title: 'Router'
+    url: !secret fritz_url
+
+  hp:
+    icon: mdi:upload-network  
+    title: 'Heat Pump'
+    url: 'http://10.1.1.240'
+  
+  ifttt:
+    title: 'IFTTT'
+    url: 'https://ifttt.com/my_applets'
+
+notify:
+  - name: NotfiyJeremy    
+    platform: html5
+    gcm_api_key: !secret gcm_api_key
+    gcm_sender_id: !secret gcm_sender_id
+    
+mqtt:
+  broker: 10.1.1.103
+  port: 1883
+  client_id: !secret mqtt_client_id
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+automation themeset:
+  - alias: 'Set theme at startup'
+    initial_state: 'on'
+    trigger:
+     - platform: homeassistant
+       event: start
+    action:
+      service: frontend.set_theme
+      data:
+        name: graphite      
+        
+#automation recNot:
+  #- alias: HTML5 push notification action button clicked
+ #   trigger:
+  #   - platform: event
+   #    event_type: html5_notification.clicked
+    #   event_data:
+     #    action: turn_off
+    #data:
+      #entity_id: switch.heatpump
+   # service: switch.turn_off
+   
+# Google Home example configuration.yaml entry
+#emulated_hue:
+#  listen_port: 80
+  # Google Home does not work on different ports.
+

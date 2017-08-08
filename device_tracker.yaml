@@ -1,0 +1,22 @@
+##############################################################################################
+#
+#                                      Device Tracking
+#                                                                                      J Brown
+##############################################################################################
+
+# Fritz Box - Monitoring of devices connected for pressence detection  
+- platform: fritz
+  host: 10.1.1.1
+  username: !secret fritz_user
+  password: !secret fritz_password
+  interval_seconds: 10
+  consider_home: 180
+  track_new_devices: false
+
+  # Owntracks - Presence detection or location tracking via MQTT Broker 
+- platform: owntracks
+  max_gps_accuracy: 20
+  waypoints: True
+  waypoint_whitelist:
+    - Anita
+    - Jeremy

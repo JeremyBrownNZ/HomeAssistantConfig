@@ -1,0 +1,26 @@
+##############################################################################################
+#
+#                                       Media Players
+#                                                                                      J Brown
+##############################################################################################
+
+# Panasonic TV - Lounge
+ - platform: panasonic_viera
+   host: 10.1.1.16
+
+# Chromecast - Bedroom
+ - platform: cast
+   host: 10.1.1.34
+
+# Chromecast - Lounge
+ - platform: cast
+   host: 10.1.1.161
+   
+# Google Home
+ - platform: cast
+   host: 10.1.1.160
+   friendly_name: Google Home
+   
+# HTPC Kodi - Lounge   
+ #- platform: kodi
+ #  host: 10.1.1.102

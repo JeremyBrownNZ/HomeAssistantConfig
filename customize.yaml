@@ -1,0 +1,39 @@
+##############################################################################################
+#
+#                                      Customization
+#                                                                                      J Brown
+##############################################################################################
+
+    switch.water:
+      friendly_name: Water Garden
+      icon: mdi:water-pump
+      
+    switch.heatpump:
+      friendly_name: Heat Pump
+      emulated_hue: true
+      emulated_hue_name: "Heat Pump"
+ #     icon: mdi: weather-windy
+ 
+    sensor.energy_consumed:
+     icon: mdi:flash
+     
+    sensor.energy_usage:
+     icon: mdi:flash
+     
+    sensor.speedtest_download:
+     friendly_name: Internet Download Speed
+     icon: mdi:download-network
+     
+    sensor.speedtest_upload:
+     friendly_name: Internet Upload Speed
+     icon: mdi:upload-network  
+     
+    sensor.speedtest_ping:   
+     friendly_name: Internet Ping
+     icon: mdi:network     
+     
+    sensor.fritz_netmonitor:
+     friendly_name: Fritz Box
+     entity_picture: /local/Fritz.png
+
+

@@ -1,0 +1,116 @@
+##############################################################################################
+#
+#                                         Automations
+#                                                                                      J Brown
+##############################################################################################
+
+#Turn heatpump on if someone comes home, its 1500L-2300L and under 10 degrees
+- action:
+  - data:
+      entity_id: switch.heatpump
+    service: switch.turn_on
+  alias: Heatpump Auto Afternoon
+  trigger:
+  - entity_id: group.all_devices
+    from: not_home
+    platform: state
+    to: home
+  condition:
+    condition: and
+    conditions:
+    - condition: time
+      after: '15:00:00'
+      before: '23:00:00'
+    - condition: numeric_state
+      entity_id: sensor.pws_temp_c
+      below: '10'
+      
+#Turn heatpump on at 0655L if someone is home.
+- action:
+  - data:
+      entity_id: switch.heatpump
+    service: switch.turn_on
+  alias: Heatpump Auto Morning
+  trigger:
+    platform: time
+    at: 06:55:00
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+    
+# Turn heatpump on maximum at 2100L due free hour of power if someone is home    
+- action:
+  - data:
+      entity_id: switch.heatpump1
+    service: switch.turn_on
+  alias: Heatpump Auto MAX
+  trigger:
+    platform: time
+    at: '21:00:00'
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+    
+#Restore heatpump only if it was turned on by other automation    
+- action:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.heatpump1
+  alias: Heatpump Auto Restore
+  trigger:
+    platform: time
+    at: '22:00:00'
+  condition:
+  - condition: state
+    entity_id: switch.heatpump1
+    state: 'on'
+    
+#notify Jeremy if connection to RPiZeroADSB is lost    
+- action:
+  - alias: notify
+    data:
+      message: Lost connection to RPiZeroADSB
+    service: notify.notfiyjeremy
+  alias: RPiZeroADSB
+  trigger:
+  - entity_id: binary_sensor.rpizeroadsb
+    platform: state
+    from: 'on'
+    to: 'off'
+    
+#notify Jeremy if connection to RPiZeroCam is lost      
+- action:
+  - alias: notify
+    data:
+      message: Lost connection to RPiZeroWCam
+    service: notify.notfiyjeremy
+  alias: RPiZeroWCam
+  trigger:
+  - entity_id: binary_sensor.RPiZeroWCam
+    platform: state
+    from: 'on'
+    to: 'off'
+    
+ #notify Jeremy if heat pump is turned on    
+- action:
+  - alias: notifyHeatPumpOn
+    data:
+      data:
+        actions:
+        - action: open
+          icon: /static/icons/favicon-192x192.png
+          title: Open Home Assistant
+        - action: turn_off
+          title: Turn off
+      message: Heatpump is on
+    service: notify.notfiyjeremy
+  alias: NotifyHeatPump
+  trigger:
+  - entity_id: switch.heatpump
+    platform: state
+    from: 'off'
+    to: 'on'
+
+

@@ -1,0 +1,160 @@
+##############################################################################################
+#
+#                                          Views
+#                                                                                      J Brown
+##############################################################################################
+  
+  default_view:
+      view: yes
+      entities:
+        - group.people
+        - group.lounge
+        - group.mbedroom
+        - group.outside
+        - group.power_net
+        - group.servers
+        #- group.weather           Removed due size of group. View Created
+        - group.all_automations
+        - group.dev
+
+  lounge_view:                      
+      name: Lounge
+      view: yes
+      entities:
+        - group.lounge
+        
+  mbedroom_view:                #Master Bedroom
+      name: Master Bedroom
+      view: yes
+      entities:
+        - group.mbedroom
+
+  weather_view:
+      name: Weather
+      view: yes
+      entities:
+        - group.weather
+        
+  trafficcams_view:
+      name: Traffic
+      view: yes
+      entities:
+        - group.trafficcams
+
+  automations_view:              # Allow automations to be disabled
+      name: Automations
+      view: yes
+      entities:
+        - group.automations
+        - group.automations_tts
+        
+#################################################
+#
+#                                          Groups
+#
+#################################################        
+
+  weather:
+     name: Weather
+     entities:
+       - sun.sun
+       - sensor.pws_temp_c
+       - sensor.pws_feelslike_c
+       - sensor.pws_relative_humidity
+       - sensor.pws_dewpoint_c
+       - sensor.pws_precip_1hr_metric
+       - sensor.pws_precip_today_metric
+       - sensor.pws_pressure_mb
+       - sensor.pws_pressure_trend          
+       - sensor.pws_uv
+       - sensor.pws_visibility_km
+       - sensor.pws_weather
+       - sensor.pws_wind_dir
+       - sensor.pws_wind_gust_kph
+       - sensor.pws_wind_kph
+       
+  lounge:
+    name: Lounge
+    entities:
+       - switch.heatpump
+       - switch.heatpump1
+       - media_player.panasonic_viera_tv
+       - media_player.kodi
+       - media_player.lounge
+       - media_player.home
+       
+  outside:
+    name: Outside
+    entities:
+       - switch.water
+       - camera.driveway
+
+  servers:
+    name: Servers
+    entities:
+       - binary_sensor.rpizeroadsb
+       - binary_sensor.rpizerowcam
+       
+  people:
+    name: People
+    entities:
+       - device_tracker.anitasiphone
+       - device_tracker.jeremy_samsung
+       
+  power_net:
+    name: Power & Internet
+    entities:
+       - sensor.energy_usage
+       - sensor.energy_consumed
+       - sensor.speedtest_download
+       - sensor.speedtest_upload
+       - sensor.speedtest_ping
+       - sensor.fritz_netmonitor
+       
+  mbedroom:
+    name: Master Bedroom
+    entities:
+       - media_player.chromecast
+       
+  dev:
+    name: Development
+    entities:
+       - switch.prototype_switch
+       
+  automations:
+    name: Automations
+    entities:
+       - automation.heatpump_auto_afternoon
+       - automation.heatpump_auto_max
+       - automation.heatpump_auto_morning
+       - automation.heatpump_auto_restore
+       - automation.rpizeroadsb
+       - automation.rpizerowcam
+       - automation.notifyheatpump
+       
+  automations_tts:
+    name: Automations TTS
+    entities:
+       - automation.heatpump_restored
+       - automation.free_power_hour
+
+  trafficcams:
+       - camera.briggs_rd_lake_terrace_marshland_rd_looking_north_to_homebase
+       - camera.brougham_ensors_looking_north_to_railway
+       - camera.halswell_junction_rd_and_shands_rd_intersection
+       - camera.halswell_junction_rd_looking_east_to_springs_rd
+       - camera.sh1_and_sh73_yaldhurst__russley_looking_west_christchurch
+       - camera.sh74_main_north_qeii_looking_northeast
+       - camera.sh1_and_sh74_main_north__johns_road_looking_north
+       - camera.sh1_and_sh74_main_north__johns_road_looking_west
+       - camera.sh1_main_north_rd_looking_north_to_dickeys_rd_and_motorway
+       - camera.sh73_blenheim__curletts_looking_south_christchurch
+       - camera.sh73_brougham__colombo_looking_west
+       - camera.sh73_yaldhurst__curletts_looking_west
+       - camera.sh73a_and_sh1_the_hub_hornby_looking_west_christchurch
+       - camera.sh74_anzac__pages_looking_south_christchurch
+       - camera.sh74_dyers_linwood_christchurch
+       - camera.sh74_main_north__qeii_looking_northeast
+       - camera.southern_motorway__curletts_rd_interchange    
+       
+   

@@ -1,0 +1,81 @@
+##############################################################################################
+#
+#                                         Sensors
+#                                                                                      J Brown
+##############################################################################################
+
+# Efergy real time power monitoring (some features commented out.)
+ - platform: efergy
+   app_token: !secret efergy_token
+   utc_offset: 720
+   monitored_variables:
+     - type: instant_readings
+#      - type: budget
+#      - type: cost
+       period: day
+       currency: $
+     - type: amount
+       period: day
+#      - type: current_values
+
+# Fritz Box monitor
+ - platform: fritzbox_netmonitor
+   host: 10.1.1.1
+   
+#Speedtest of internet at set intervals of an hour.
+ - platform: speedtest
+   monitored_conditions:
+     - ping
+     - download
+     - upload
+   minute:
+     - 0
+     - 30
+     
+# Weather Underground for real time weather information (some features commented out.)    
+ - platform: wunderground
+   api_key: !secret WU_Key
+   monitored_conditions:
+#      - alerts
+     - dewpoint_c
+#      - dewpoint_f
+#      - dewpoint_string
+     - feelslike_c
+#      - feelslike_f
+#      - feelslike_string
+#      - heat_index_c
+#      - heat_index_f
+#      - heat_index_string
+#      - elevation
+#      - location
+#      - observation_time
+#      - precip_1hr_in
+     - precip_1hr_metric
+#      - precip_1hr_string
+#      - precip_today_in
+     - precip_today_metric
+#      - precip_today_string
+#      - pressure_in
+     - pressure_mb
+     - pressure_trend
+     - relative_humidity
+#      - station_id
+#      - solarradiation
+#      - temperature_string
+     - temp_c
+#      - temp_f
+     - UV
+     - visibility_km
+#      - visibility_mi
+     - weather
+#      - wind_degrees
+     - wind_dir
+     - wind_gust_kph
+#      - wind_gust_mph
+     - wind_kph
+#      - wind_mph
+#      - wind_string
+
+#Open Hardware Monitor              Cant get to work
+ #- platform: openhardwaremonitor
+ #  host: 10.1.1.102

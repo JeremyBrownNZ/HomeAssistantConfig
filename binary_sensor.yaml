@@ -1,0 +1,15 @@
+##############################################################################################
+#
+#                                      Binary Sensors
+#                                                                                      J Brown
+##############################################################################################
+
+# Ping servers to ensure they are up
+
+ - platform: ping
+   host: 10.1.1.101
+   name: RPiZeroADSB
+ 
+ - platform: ping
+   host: 10.1.1.105
+   name: RPiZeroWCam

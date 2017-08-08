@@ -1,0 +1,38 @@
+##############################################################################################
+#
+#                                         Switches
+#                                                                                      J Brown
+##############################################################################################
+
+#Command line switches
+- platform: command_line
+  switches:
+    
+    #Turn heatpump on at 20 degrees
+     heatpump:
+        command_on: "~/HeatPumpIR/20deg.sh"
+        command_off: "/usr/bin/curl -X GET http://10.1.1.240/irHPoff"
+    
+    #Turn heatpump on at 30 degrees        
+     heatpump1:
+        command_on: "~/HeatPumpIR/30deg.sh"
+        command_off: "~/HeatPumpIR/20degRestore.sh"
+        friendly_name: Heat Pump MAX
+     
+    #Garden Tap outside            
+     water:
+       command_on: "~/RPiZeroADSB/waterOn.sh"
+       command_off: "~/RPiZeroADSB/waterOff.sh"
+       command_state: "~/RPiZeroADSB/waterCheck.sh"
+       value_template: '{{ value == "1" }}'
+       
+#MQTT switches       
+- platform: mqtt
+  name: "Prototype Switch"
+#    state_topic: "home/ESP32"
+  command_topic: "home/ESP32" 
+#    payload_on: "ON"
+#    payload_off: "OFF"
+#    optimistic: false
+#    qos: 0
+#    retain: true 
